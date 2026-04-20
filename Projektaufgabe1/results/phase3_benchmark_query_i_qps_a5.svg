@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+<rect width="100%" height="100%" fill="white" />
+<text x="480.0" y="32" text-anchor="middle" font-size="22" font-family="Helvetica, Arial, sans-serif">query_i_qps for num_attributes=5</text>
+<line x1="90" y1="490" x2="700" y2="490" stroke="#111827" stroke-width="2"/>
+<line x1="90" y1="60" x2="90" y2="490" stroke="#111827" stroke-width="2"/>
+<text x="395.0" y="540" text-anchor="middle" font-size="14" font-family="Helvetica, Arial, sans-serif">num_tuples</text>
+<text x="24" y="275.0" transform="rotate(-90 24 275.0)" text-anchor="middle" font-size="14" font-family="Helvetica, Arial, sans-serif">query_i_qps</text>
+<line x1="90.0" y1="60" x2="90.0" y2="490" stroke="#e5e7eb" stroke-width="1"/>
+<text x="90.0" y="514" text-anchor="middle" font-size="12" font-family="Helvetica, Arial, sans-serif">2000</text>
+<line x1="90" y1="490.0" x2="700" y2="490.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="78" y="494.0" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif">0.0</text>
+<line x1="90" y1="404.0" x2="700" y2="404.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="78" y="408.0" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif">4047.4</text>
+<line x1="90" y1="318.0" x2="700" y2="318.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="78" y="322.0" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif">8094.8</text>
+<line x1="90" y1="232.0" x2="700" y2="232.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="78" y="236.0" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif">12142.2</text>
+<line x1="90" y1="146.00000000000006" x2="700" y2="146.00000000000006" stroke="#e5e7eb" stroke-width="1"/>
+<text x="78" y="150.00000000000006" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif">16189.6</text>
+<line x1="90" y1="60.0" x2="700" y2="60.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="78" y="64.0" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif">20237.0</text>
+<polyline fill="none" stroke="#0f766e" stroke-width="3" points="90.00,60.00" />
+<circle cx="90.00" cy="60.00" r="4" fill="#0f766e" />
+<line x1="724" y1="70" x2="752" y2="70" stroke="#0f766e" stroke-width="4" />
+<text x="760" y="74" font-size="12" font-family="Helvetica, Arial, sans-serif">H, s=0.875</text>
+<polyline fill="none" stroke="#dc2626" stroke-width="3" points="90.00,346.19" />
+<circle cx="90.00" cy="346.19" r="4" fill="#dc2626" />
+<line x1="724" y1="92" x2="752" y2="92" stroke="#dc2626" stroke-width="4" />
+<text x="760" y="96" font-size="12" font-family="Helvetica, Arial, sans-serif">V_API, s=0.875</text>
+<polyline fill="none" stroke="#2563eb" stroke-width="3" points="90.00,398.71" />
+<circle cx="90.00" cy="398.71" r="4" fill="#2563eb" />
+<line x1="724" y1="114" x2="752" y2="114" stroke="#2563eb" stroke-width="4" />
+<text x="760" y="118" font-size="12" font-family="Helvetica, Arial, sans-serif">V_VIEW, s=0.875</text>
+</svg>

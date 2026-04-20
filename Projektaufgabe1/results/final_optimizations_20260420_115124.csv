@@ -1,0 +1,4 @@
+table_name,optimization_mode,num_tuples,num_attributes,sparsity,duration_s,query_i_qps,query_ii_qps,vertical_mb
+h_opt_smoke,basic,2000,6,0.875,0.2,6431.4734,18082.7359,0.4141
+h_opt_smoke,covering,2000,6,0.875,0.2,7338.7402,18615.2686,0.4375
+h_opt_smoke,partial,2000,6,0.875,0.2,5996.3659,17278.7508,0.5469

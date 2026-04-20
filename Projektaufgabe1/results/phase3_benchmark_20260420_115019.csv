@@ -1,0 +1,4 @@
+table_name,num_tuples,num_attributes,sparsity,duration_s,representation,index_mode,query_i_qps,query_i_count,query_i_elapsed_s,query_ii_qps,query_ii_count,query_ii_elapsed_s,horizontal_mb,vertical_mb,storage_mb
+h_smoke,2000,5,0.875,0.2,H,basic,23345.4914,4670,0.2,24704.1148,4941,0.2,0.3672,0.4062,0.3672
+h_smoke,2000,5,0.875,0.2,V_VIEW,basic,6552.3313,1311,0.2001,2684.8658,537,0.2,0.3672,0.4062,0.4062
+h_smoke,2000,5,0.875,0.2,V_API,basic,8812.9418,1763,0.2,19354.9637,3871,0.2,0.3672,0.4062,0.4062

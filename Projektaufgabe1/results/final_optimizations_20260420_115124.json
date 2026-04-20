@@ -1,0 +1,35 @@
+[
+  {
+    "table_name": "h_opt_smoke",
+    "optimization_mode": "basic",
+    "num_tuples": 2000,
+    "num_attributes": 6,
+    "sparsity": 0.875,
+    "duration_s": 0.2,
+    "query_i_qps": 6431.4734,
+    "query_ii_qps": 18082.7359,
+    "vertical_mb": 0.4141
+  },
+  {
+    "table_name": "h_opt_smoke",
+    "optimization_mode": "covering",
+    "num_tuples": 2000,
+    "num_attributes": 6,
+    "sparsity": 0.875,
+    "duration_s": 0.2,
+    "query_i_qps": 7338.7402,
+    "query_ii_qps": 18615.2686,
+    "vertical_mb": 0.4375
+  },
+  {
+    "table_name": "h_opt_smoke",
+    "optimization_mode": "partial",
+    "num_tuples": 2000,
+    "num_attributes": 6,
+    "sparsity": 0.875,
+    "duration_s": 0.2,
+    "query_i_qps": 5996.3659,
+    "query_ii_qps": 17278.7508,
+    "vertical_mb": 0.5469
+  }
+]
