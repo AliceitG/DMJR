@@ -1,0 +1,4 @@
+table_name,optimization_mode,num_tuples,num_attributes,sparsity,duration_s,query_i_qps,query_ii_qps,vertical_mb
+h_video_opt,basic,8000,10,0.875,0.15,4082.1729,18106.5987,1.5156
+h_video_opt,covering,8000,10,0.875,0.15,5151.7778,18914.9455,1.6719
+h_video_opt,partial,8000,10,0.875,0.15,3723.9782,16211.9148,2.1016

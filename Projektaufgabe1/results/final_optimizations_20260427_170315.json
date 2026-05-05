@@ -1,0 +1,35 @@
+[
+  {
+    "table_name": "h_video_opt",
+    "optimization_mode": "basic",
+    "num_tuples": 8000,
+    "num_attributes": 10,
+    "sparsity": 0.875,
+    "duration_s": 0.15,
+    "query_i_qps": 4082.1729,
+    "query_ii_qps": 18106.5987,
+    "vertical_mb": 1.5156
+  },
+  {
+    "table_name": "h_video_opt",
+    "optimization_mode": "covering",
+    "num_tuples": 8000,
+    "num_attributes": 10,
+    "sparsity": 0.875,
+    "duration_s": 0.15,
+    "query_i_qps": 5151.7778,
+    "query_ii_qps": 18914.9455,
+    "vertical_mb": 1.6719
+  },
+  {
+    "table_name": "h_video_opt",
+    "optimization_mode": "partial",
+    "num_tuples": 8000,
+    "num_attributes": 10,
+    "sparsity": 0.875,
+    "duration_s": 0.15,
+    "query_i_qps": 3723.9782,
+    "query_ii_qps": 16211.9148,
+    "vertical_mb": 2.1016
+  }
+]
