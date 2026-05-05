@@ -1,0 +1,117 @@
+\documentclass[11pt]{scrartcl}
+
+\usepackage[top=1.5cm]{geometry}
+\usepackage{url}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\newcommand{\youranswerhere}{[Your answer goes here \ldots]}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\lstdefinestyle{dmrsql}{
+  language=SQL,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{magenta!75!black},
+  stringstyle=\color{green!50!black},
+  showspaces=false,
+  showstringspaces=false,
+  commentstyle=\color{gray}}
+
+\lstdefinestyle{dmrJava}{
+  language=JAVA,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{magenta!75!black},
+  stringstyle=\color{green!50!black},
+  showspaces=false,
+  showstringspaces=false,
+  commentstyle=\color{gray}}
+
+\title{
+  \textbf{\large Projektaufgabe 2 } \\
+  Phase 2 – Legen der Basis (2.5 P) \\
+  {\large Datenmanagement jenseits von Relationen}
+}
+
+\author{
+  Gruppen Nummer (e.g. A1, B5, B3) \\
+  \large Lastname1 Firstname1, StudentID1 \\
+  \large Lastname2 Firstname2, StudentID2 
+}
+
+\begin{document}
+
+\maketitle\thispagestyle{empty}
+
+Dieses Reporting Template dient der Vorbereitung der Abgabe von Phase 2.
+
+\subsection*{Datengenerator für Matrizen mit Sparsity (0.5 Punkte)}
+
+Zeigen Sie den Code der Funktion generate() als Listing oder Screenshot. Gehen Sie
+(kurz) auf die wesentlichen Aspekte ein
+
+\youranswerhere{}
+
+\begin{lstlisting}[style=dmrsql]
+[Code der generate Fuktion ...]
+\end{lstlisting}
+
+\subsection*{Import der Matrizen in das DBMS (0.5 Punkte):}
+
+Geben Sie das Create Table Statement für Matrix A an.
+
+\begin{lstlisting}[style=dmrsql]
+[Create Table A ...]
+\end{lstlisting}
+
+Für die Übung bereiten Sie eine Demo des Datenimports vor.
+
+
+\subsection*{Wahl des Toy Beispiels (0.5 P):}
+
+Geben Sie Matrix A und B als 2D Array an.
+
+\youranswerhere{}
+
+Zeigen Sie die äquivalente darstellung der Matrix A und B in der Datenbank
+
+\youranswerhere{}
+
+\subsection*{Implementierung von Ansatz 0 (0.5 P):}
+Zeigen Sie den Code der Matrixmultiplikation als Listing oder Screenshot. Erläutern Sie
+(kurz), welche Laufzeit ihr Algorithmus hat und warum das Kriterium keinen Algorith-
+mus mit sub-kubischer Laufzeit zu w¨ahlen erf¨ullt ist
+
+\begin{lstlisting}[style=dmrsql]
+[Matrixmultiplikation ...]
+\end{lstlisting}
+
+\subsection*{Implementierung von Ansatz 1 (0.5 P):}
+Berechnen Sie von Hand das Ergebnis $C = A \times B$ füur ihr Toy Beispiel und geben Sie es
+nachfolgend an.
+
+\youranswerhere{}
+
+Zeigen Sie, dass Ihr System $C$ korrekt berechnet (z.B. als Screenshot)
+
+\subsection*{Zeitmamagement}
+
+Benötigte Zeit pro Person (nur Phase 1): \textbf{XXX}
+
+\subsection*{References}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c}
+    \hline
+    \textbf{Important:} Reference your information sources! \tabularnewline
+    Remove this section if you use footnotes to reference your information sources. \tabularnewline
+    \hline
+  \end{tabular}
+\end{table}
+
+\end{document}
