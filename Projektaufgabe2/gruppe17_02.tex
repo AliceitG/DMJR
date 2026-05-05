@@ -105,7 +105,26 @@ Geben Sie das Create Table Statement für Matrix A an.
     i INT,
     j INT,
     val DOUBLE PRECISION
-);]
+);
+def import_to_db(matrix, table_name, db_config):
+    # Daten vorbereiten
+    sparse_data = []
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            if matrix[i][j] != 0.0:
+                sparse_data.append((i + 1, j + 1, matrix[i][j]))
+    
+    # Verbindung und Import
+    conn = psycopg2.connect(**db_config)
+    cursor = conn.cursor()
+    
+    query = f"INSERT INTO {table_name} (i, j, val) VALUES %s"
+    execute_values(cursor, query, sparse_data)
+    
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print(f"Import in {table_name} erfolgreich!")]
 \end{lstlisting}
 
 Für die Übung bereiten Sie eine Demo des Datenimports vor.
