@@ -38,9 +38,11 @@
 }
 
 \author{
-  Gruppen Nummer (e.g. A1, B5, B3) \\
-  \large Lastname1 Firstname1, StudentID1 \\
-  \large Lastname2 Firstname2, StudentID2 
+  Gruppen Nummer (A17) \\
+  \large Acikyol Aleyna, 12032843 \\
+  \large Özcan Ahmet, 12311287 \\
+  \large Sadykova Nargiz, 12129337 \\
+  
 }
 
 \begin{document}
@@ -54,10 +56,44 @@ Dieses Reporting Template dient der Vorbereitung der Abgabe von Phase 2.
 Zeigen Sie den Code der Funktion generate() als Listing oder Screenshot. Gehen Sie
 (kurz) auf die wesentlichen Aspekte ein
 
-\youranswerhere{}
+{Die Funktion generate(l, sparsity) erzeugt zwei nahezu quadratische Matrizen A und B als 2D-Arrays mit Gleitkommazahlen. Aus dem Größenparameter l werden die Dimensionen m = l - 1 und n = l - 1 berechnet, sodass A die Größe (l-1) × l und B die Größe l × (l-1) besitzt. Die Matrixeinträge werden zunächst mit zufälligen double-Werten erzeugt; in Python entsprechen die verwendeten float-Werte der double-Genauigkeit. Anschließend wird für jede Matrix aus der Gesamtanzahl der Zellen und dem Parameter sparsity die Anzahl der Nullwerte bestimmt. Diese Nullwerte werden zufällig auf die möglichen Matrixpositionen verteilt, indem alle Indexpunkte (i, j) erzeugt, gemischt und die berechnete Anzahl davon auf 0.0 gesetzt wird. Die Funktion gibt beide Matrizen als Rückgabewert zurück.}
 
 \begin{lstlisting}[style=dmrsql]
-[Code der generate Fuktion ...]
+[import random
+
+def generate(l, sparsity):
+    if l < 2:
+        raise ValueError("l muss mindestens 2 sein")
+    if not (0.0 <= sparsity <= 1.0):
+        raise ValueError("sparsity muss zwischen 0 und 1 liegen")
+
+    m = l - 1
+    n = l - 1
+
+    # A: m x l
+    A = [[random.uniform(1.0, 10.0) for _ in range(l)] for _ in range(m)]
+    # B: l x n
+    B = [[random.uniform(1.0, 10.0) for _ in range(n)] for _ in range(l)]
+
+    total_A = m * l
+    total_B = l * n
+
+    zeros_in_A = round(sparsity * total_A)
+    zeros_in_B = round(sparsity * total_B)
+
+    positions_A = [(i, j) for i in range(m) for j in range(l)]
+    positions_B = [(i, j) for i in range(l) for j in range(n)]
+
+    random.shuffle(positions_A)
+    random.shuffle(positions_B)
+
+    for i, j in positions_A[:zeros_in_A]:
+        A[i][j] = 0.0
+    for i, j in positions_B[:zeros_in_B]:
+        B[i][j] = 0.0
+
+    return A, B
+]
 \end{lstlisting}
 
 \subsection*{Import der Matrizen in das DBMS (0.5 Punkte):}
@@ -65,7 +101,33 @@ Zeigen Sie den Code der Funktion generate() als Listing oder Screenshot. Gehen S
 Geben Sie das Create Table Statement für Matrix A an.
 
 \begin{lstlisting}[style=dmrsql]
-[Create Table A ...]
+[CREATE TABLE A (
+    i INT,
+    j INT,
+    val DOUBLE PRECISION
+);
+import psycopg2
+from psycopg2.extras import execute_values
+
+def import_to_db(matrix, table_name, db_config):
+    # Daten vorbereiten
+    sparse_data = []
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            if matrix[i][j] != 0.0:
+                sparse_data.append((i + 1, j + 1, matrix[i][j]))
+    
+    # Verbindung und Import
+    conn = psycopg2.connect(**db_config)
+    cursor = conn.cursor()
+    
+    query = f"INSERT INTO {table_name} (i, j, val) VALUES %s"
+    execute_values(cursor, query, sparse_data)
+    
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print(f"Import in {table_name} erfolgreich!")]
 \end{lstlisting}
 
 Für die Übung bereiten Sie eine Demo des Datenimports vor.
@@ -100,7 +162,7 @@ Zeigen Sie, dass Ihr System $C$ korrekt berechnet (z.B. als Screenshot)
 
 \subsection*{Zeitmamagement}
 
-Benötigte Zeit pro Person (nur Phase 1): \textbf{XXX}
+Benötigte Zeit pro Person (nur Phase 1): \textbf{Aleyna Acikyol: ,Ahmet Özcan: ,Nargiz Sadykova: 3.5 Stunden.}
 
 \subsection*{References}
 
