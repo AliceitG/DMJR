@@ -23,8 +23,8 @@
   showstringspaces=false,
   commentstyle=\color{gray}}
 
-\lstdefinestyle{dmrJava}{
-  language=JAVA,
+\lstdefinestyle{dmrPython}{
+  language=PYTHON,
   basicstyle=\small\ttfamily,
   keywordstyle=\color{magenta!75!black},
   stringstyle=\color{green!50!black},
@@ -34,7 +34,7 @@
 
 \title{
   \textbf{\large Projektaufgabe 2 } \\
-  Phase 2 – Legen der Basis (2.5 P) \\
+  Phase 1 – Legen der Basis (2.5 P) \\
   {\large Datenmanagement jenseits von Relationen}
 }
 
@@ -43,14 +43,13 @@
   \large Acikyol Aleyna, 12032843 \\
   \large Özcan Ahmet, 12311287 \\
   \large Sadykova Nargiz, 12129337 \\
-  
 }
 
 \begin{document}
 
 \maketitle\thispagestyle{empty}
 
-Dieses Reporting Template dient der Vorbereitung der Abgabe von Phase 2.
+Dieses Reporting Template dient der Vorbereitung der Abgabe von Phase 1.
 
 \subsection*{Datengenerator für Matrizen mit Sparsity (0.5 Punkte)}
 
@@ -59,8 +58,8 @@ Zeigen Sie den Code der Funktion generate() als Listing oder Screenshot. Gehen S
 
 {Die Funktion generate(l, sparsity) erzeugt zwei nahezu quadratische Matrizen A und B als 2D-Arrays mit Gleitkommazahlen. Aus dem Größenparameter l werden die Dimensionen m = l - 1 und n = l - 1 berechnet, sodass A die Größe (l-1) × l und B die Größe l × (l-1) besitzt. Die Matrixeinträge werden zunächst mit zufälligen double-Werten erzeugt; in Python entsprechen die verwendeten float-Werte der double-Genauigkeit. Anschließend wird für jede Matrix aus der Gesamtanzahl der Zellen und dem Parameter sparsity die Anzahl der Nullwerte bestimmt. Diese Nullwerte werden zufällig auf die möglichen Matrixpositionen verteilt, indem alle Indexpunkte (i, j) erzeugt, gemischt und die berechnete Anzahl davon auf 0.0 gesetzt wird. Die Funktion gibt beide Matrizen als Rückgabewert zurück.}
 
-\begin{lstlisting}[style=dmrsql]
-[import random
+\begin{lstlisting}[style=dmrPython]
+import random
 
 def generate(l, sparsity):
     if l < 2:
@@ -94,7 +93,6 @@ def generate(l, sparsity):
         B[i][j] = 0.0
 
     return A, B
-]
 \end{lstlisting}
 
 \subsection*{Import der Matrizen in das DBMS (0.5 Punkte):}
@@ -102,7 +100,7 @@ def generate(l, sparsity):
 Geben Sie das Create Table Statement für Matrix A an.
 
 \begin{lstlisting}[style=dmrsql]
-[CREATE TABLE A (
+CREATE TABLE A (
     i INT,
     j INT,
     val DOUBLE PRECISION
@@ -117,18 +115,18 @@ def import_to_db(matrix, table_name, db_config):
         for j in range(len(matrix[0])):
             if matrix[i][j] != 0.0:
                 sparse_data.append((i + 1, j + 1, matrix[i][j]))
-    
+
     # Verbindung und Import
     conn = psycopg2.connect(**db_config)
     cursor = conn.cursor()
-    
+
     query = f"INSERT INTO {table_name} (i, j, val) VALUES %s"
     execute_values(cursor, query, sparse_data)
-    
+
     conn.commit()
     cursor.close()
     conn.close()
-    print(f"Import in {table_name} erfolgreich!")]
+    print(f"Import in {table_name} erfolgreich!")
 \end{lstlisting}
 
 Für die Übung bereiten Sie eine Demo des Datenimports vor.
@@ -138,20 +136,84 @@ Für die Übung bereiten Sie eine Demo des Datenimports vor.
 
 Geben Sie Matrix A und B als 2D Array an.
 
-\youranswerhere{}
+Matrix A: \\
+\begin{bmatrix}
+  1  &  0  &  3 \\
+  0  &  7  &  8 \\
+  9  &  8  &  0 \\
+  4  &  0  &  2
+\end{bmatrix}
+\\\\
+Matrix B:\\
+\begin{bmatrix}
+  5  &  0  &  7  &  10  &  4 \\
+  8  &  9  &  1  &  0  &  8 \\
+  4  &  0  &  0  &  2  &  1
+\end{bmatrix}
 
-Zeigen Sie die äquivalente darstellung der Matrix A und B in der Datenbank
+Zeigen Sie die äquivalente Darstellung der Matrix A und B in der Datenbank
 
-\youranswerhere{}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{2-3_MatrixA.png}
+        \caption{Matrix A}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{2-3_MatrixB.png}
+        \caption{Matrix B}
+    \end{minipage}
+\end{figure}
 
 \subsection*{Implementierung von Ansatz 0 (0.5 P):}
-Zeigen Sie den Code der Matrixmultiplikation als Listing oder Screenshot. Erläutern Sie
-(kurz), welche Laufzeit ihr Algorithmus hat und warum das Kriterium keinen Algorith-
-mus mit sub-kubischer Laufzeit zu w¨ahlen erf¨ullt ist
+Zeigen Sie den Code der Matrixmultiplikation als Listing oder Screenshot. Erläutern Sie (kurz), welche Laufzeit ihr Algorithmus hat und warum das Kriterium keinen Algorithmus mit sub-kubischer Laufzeit zu wählen erfüllt ist
 
-\begin{lstlisting}[style=dmrsql]
-[Matrixmultiplikation ...]
+\begin{lstlisting}[style=dmrPython]
+# A 4x3 (mxl)
+a = [
+    [1, 0, 3],
+    [0, 7, 8],
+    [9, 8, 0],
+    [4, 0, 2]
+]
+
+# B 3x5 (lxn)
+b = [
+    [5, 0, 7, 10, 4],
+    [8, 9, 1, 0, 8],
+    [4, 0, 0, 2, 1]
+]
+
+
+def matrixmult(A, B):
+    """C = A x B auf Client-Seite (also reine Mathe)"""
+
+    m = len(A)
+    l = len(A[0])
+    n = len(B[0])
+
+    #befuelle C (mxn) mit Nullern
+    C = [[0] * n for _ in range(m)]
+
+    for i in range(m):
+        for k in range(l):
+            for j in range(n):
+                C[i][j] += A[i][k] * B[k][j]
+
+    return C
+
+# Test mit Toy-Beispiel
+c_result = matrixmult(a, b)
+
+print("\nErgebnis C = A x B (Ansatz 0):")
+for row in c_result:
+    print(row)
 \end{lstlisting}
+Die Laufzeit des Algorithmus von $matrixmult$ beträgt O($n^3$). Dies wird durch die dreifache $for$-Schleife ermöglicht. \\
+Die Schleifen durchlaufen die Reihen von A (auch als $m$ bezeichnet, hier $4$ Reihen), die Spalten von A (welche gleich lang zu den Reihen von B ist; hier markiert als $l$) und die Spalten von B (gekennzeichnet als $n$).
 
 \subsection*{Implementierung von Ansatz 1 (0.5 P):}
 
@@ -193,18 +255,6 @@ Ansatz 0 == Ansatz 1: True
 
 \subsection*{Zeitmamagement}
 
-Benötigte Zeit pro Person (nur Phase 1): \textbf{Aleyna Acikyol: ,Ahmet Özcan: 4 Stunden ,Nargiz Sadykova: 3.5 Stunden.}
-
-\subsection*{References}
-
-\begin{table}[H]
-  \centering
-  \begin{tabular}{c}
-    \hline
-    \textbf{Important:} Reference your information sources! \tabularnewline
-    Remove this section if you use footnotes to reference your information sources. \tabularnewline
-    \hline
-  \end{tabular}
-\end{table}
+Benötigte Zeit pro Person (nur Phase 1): \textbf{Aleyna Acikyol: 4.5 Stunden, Ahmet Özcan: 4 Stunden, Nargiz Sadykova: 3.5 Stunden.}
 
 \end{document}
