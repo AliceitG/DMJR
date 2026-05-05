@@ -1,5 +1,3 @@
-import numpy as np
-
 # A 4x3
 a = [
     [1, 0, 3],

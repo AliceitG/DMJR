@@ -32,7 +32,7 @@ def import_matrix(matrix, table_name, cursor):
     Nur Non-Zero Werte werden gespeichert."""
 
     cursor.execute(f"DROP TABLE IF EXISTS {table_name};")
-    cursor.execute(f"CREATE TABLE {table_name} (i INT, j INT, val INT);")
+    cursor.execute(f"CREATE TABLE {table_name} (i INT, j INT, val DOUBLE PRECISION);")
 
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
@@ -47,9 +47,9 @@ def import_matrix(matrix, table_name, cursor):
 
 # Setup TODO andere nutzer bitte angaben ändern
 conn = psycopg2.connect(
-    dbname="toydb",
-    user="postgres",
-    password="",
+    dbname="projektaufgabe1",
+    user="projektaufgabe1_user",
+    password="1234",
     host="localhost"
 )
 cur = conn.cursor()
@@ -66,7 +66,6 @@ for table in ["A", "B"]:
     for r in rows:
         print(r)
 
-# TODO WICHTIG falls ihr commiten wollt, folgendes auskommentieren
-#conn.commit()
+conn.commit()
 cur.close()
 conn.close()
