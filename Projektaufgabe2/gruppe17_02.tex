@@ -106,6 +106,9 @@ Geben Sie das Create Table Statement für Matrix A an.
     j INT,
     val DOUBLE PRECISION
 );
+import psycopg2
+from psycopg2.extras import execute_values
+
 def import_to_db(matrix, table_name, db_config):
     # Daten vorbereiten
     sparse_data = []
