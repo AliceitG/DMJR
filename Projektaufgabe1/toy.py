@@ -50,7 +50,7 @@ def setup_toy_example():
                 (2, 'a3', '2'),
                 (3, 'a3', '3');
                 """
-            )
+            ) # tupel 4 fehlt
 
             cur.execute(
                 """
