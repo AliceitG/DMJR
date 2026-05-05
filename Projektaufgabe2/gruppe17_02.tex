@@ -6,6 +6,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{amsmath}
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
@@ -153,16 +154,46 @@ mus mit sub-kubischer Laufzeit zu w¨ahlen erf¨ullt ist
 \end{lstlisting}
 
 \subsection*{Implementierung von Ansatz 1 (0.5 P):}
-Berechnen Sie von Hand das Ergebnis $C = A \times B$ füur ihr Toy Beispiel und geben Sie es
-nachfolgend an.
 
-\youranswerhere{}
+Ansatz 1 berechnet $C = A \times B$ direkt im DBMS auf Basis der Sparse-Darstellung
+der Tabellen \texttt{A(i, j, val)} und \texttt{B(i, j, val)}.
+Der Join über \texttt{A.j = B.i} entspricht dem inneren Produkt der Matrixmultiplikation.
+Das Ergebnis wird nicht persistent gespeichert.
+
+\begin{lstlisting}[style=dmrsql]
+SELECT A.i, B.j, SUM(A.val * B.val)
+FROM A, B
+WHERE A.j = B.i
+GROUP BY A.i, B.j
+ORDER BY A.i, B.j;
+\end{lstlisting}
+
+Das handberechnete Ergebnis $C = A \times B$ für das Toy-Beispiel lautet:
+
+\[
+C = \begin{pmatrix}
+ 17 &  0 &  7 & 16 &   7 \\
+ 88 & 63 &  7 & 16 &  64 \\
+109 & 72 & 71 & 90 & 100 \\
+ 28 &  0 & 28 & 44 &  18
+\end{pmatrix}
+\]
 
 Zeigen Sie, dass Ihr System $C$ korrekt berechnet (z.B. als Screenshot)
 
+Die Korrektheitsprüfung erfolgt durch Ausführen von \texttt{Task2-6-Korrektheitspruefung.py},
+welches Ansatz~0 und Ansatz~1 auf dem Toy-Beispiel ausführt und die Ergebnisse vergleicht.
+Beide Ansätze liefern das identische Ergebnis:
+
+\begin{lstlisting}[style=dmrsql]
+Ansatz 0 == erwartet: True
+Ansatz 1 == erwartet: True
+Ansatz 0 == Ansatz 1: True
+\end{lstlisting}
+
 \subsection*{Zeitmamagement}
 
-Benötigte Zeit pro Person (nur Phase 1): \textbf{Aleyna Acikyol: ,Ahmet Özcan: ,Nargiz Sadykova: 3.5 Stunden.}
+Benötigte Zeit pro Person (nur Phase 1): \textbf{Aleyna Acikyol: ,Ahmet Özcan: 4 Stunden ,Nargiz Sadykova: 3.5 Stunden.}
 
 \subsection*{References}
 
