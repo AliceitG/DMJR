@@ -13,6 +13,13 @@ def ansatz1(cursor):
     """)
     return cursor.fetchall()
 
+'''Beispiel
+A = 1 0  B = 3 0
+    0 2      0 4
+    
+A = (1,1,1), (2,2,2)
+B = (1,1,3), (2,2,4)'''
+
 
 # TODO andere Nutzer bitte DB-Angaben anpassen
 db_config = {

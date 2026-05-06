@@ -40,7 +40,7 @@ def sparse_to_matrix(rows, m, n):
     """Konvertiert SQL-Ergebnis (i, j, val) in eine 2D-Liste (0-basiert)."""
     C = [[0.0] * n for _ in range(m)]
     for i, j, val in rows:
-        C[i - 1][j - 1] = float(val)
+        C[i - 1][j-1] = float(val)
     return C
 
 
