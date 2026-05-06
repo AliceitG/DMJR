@@ -75,9 +75,9 @@ if __name__ == "__main__":
 
     # DB-Konfig (** Bitte Werte anpassen **)
     db_config = {
-        "dbname": "postgres",
-        "user": "nargiz",
-        "password": "...",
+        "dbname": "projektaufgabe1",
+        "user": "projektaufgabe1_user",
+        "password": "1234",
         "host": "localhost",
     }
 
