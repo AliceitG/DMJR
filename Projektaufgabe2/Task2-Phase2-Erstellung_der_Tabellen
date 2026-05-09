@@ -1,0 +1,17 @@
+
+CREATE TABLE A_ROW (
+    i INT NOT NULL,
+    row DOUBLE PRECISION[] NOT NULL
+);
+
+CREATE TABLE B_COL (
+    j INT NOT NULL,
+    col DOUBLE PRECISION[] NOT NULL
+);
+
+//Test für Tabellen nach Ausführung vom alternativen Import:
+
+SELECT COUNT(*) FROM A_ROW;
+SELECT COUNT(*) FROM B_COL;
+SELECT * FROM A_ROW LIMIT 3;
+SELECT * FROM B_COL LIMIT 3;
