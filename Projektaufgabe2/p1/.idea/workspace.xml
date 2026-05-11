@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4513690f-dfc6-46f6-a1e2-989cf18112bf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Task2-1-Generator_Datenimportierung.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task2-2-Tabellenerstellung.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task2-3-ToyBeispiel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task2-4-Ansatz0.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task2-5-Ansatz1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task2-6-Korrektheitspruefung.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task2-Phase2-Alternativer_Import_Ansatz2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task2-Phase2-Erstellung_der_Tabellen" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report_t2p1/2-3_MatrixA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report_t2p1/2-3_MatrixB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report_t2p1/gruppe17_02.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../report_t2p1/gruppe17_02.tex" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="3DawTvlcmkb2tGahRr2sQ1qmAUi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
+    "git-widget-placeholder": "main",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.31033.139" />
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4513690f-dfc6-46f6-a1e2-989cf18112bf" name="Changes" comment="" />
+      <created>1778533509519</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1778533509519</updated>
+      <workItem from="1778533512009" duration="23000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
