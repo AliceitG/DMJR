@@ -55,7 +55,29 @@ def import_rows_and_cols(A, B, db_config):
     cursor.close()
     conn.close()
 
-# Test
+def create_tables(db_config):
+    conn = psycopg2.connect(**db_config)
+    cursor = conn.cursor()
+
+    cursor.execute("DROP TABLE IF EXISTS A_ROW;")
+    cursor.execute("DROP TABLE IF EXISTS B_ROW;")
+
+    cursor.execute("""
+        CREATE TABLE A_ROW (
+        i INT NOT NULL,
+        row DOUBLE PRECISION[] NOT NULL);
+    """)
+
+    cursor.execute("""
+        CREATE TABLE B_COL (
+        j INT NOT NULL,
+        col DOUBLE PRECISION[] NOT NULL);
+    """)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
 
 if __name__ == "__main__":
     l = 10
@@ -65,11 +87,12 @@ if __name__ == "__main__":
 
 # Werte bitte anpassen!
     db_config = {
-        "dbname": "postgres",
-        "user": "nargiz",
-        "password": "...",
+        "dbname": "toydb",
+        "user": "postgres",
+        "password": "wortpasst",
         "host": "localhost"
     }
 
+    create_tables(db_config)
     import_rows_and_cols(A, B, db_config)
     print("Import für Ansatz 2 erfolgreich!")
