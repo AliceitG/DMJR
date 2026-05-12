@@ -2,9 +2,9 @@ import psycopg2
 
 # Werte bitte anpassen!
 db_config = {
-        "dbname": "toydb",
+        "dbname": "...",
         "user": "postgres",
-        "password": "wortpasst",
+        "password": "...,
         "host": "localhost"
     }
 

@@ -87,9 +87,9 @@ if __name__ == "__main__":
 
 # Werte bitte anpassen!
     db_config = {
-        "dbname": "toydb",
+        "dbname": "...",
         "user": "postgres",
-        "password": "wortpasst",
+        "password": "...",
         "host": "localhost"
     }
 
