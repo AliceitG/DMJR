@@ -9,7 +9,7 @@ CREATE TABLE B_COL (
     col DOUBLE PRECISION[] NOT NULL
 );
 
-//Test für Tabellen nach Ausführung vom alternativen Import:
+-- Test für Tabellen nach Ausführung vom alternativen Import:
 
 SELECT COUNT(*) FROM A_ROW;
 SELECT COUNT(*) FROM B_COL;

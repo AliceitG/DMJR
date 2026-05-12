@@ -2,9 +2,9 @@ import psycopg2
 
 # Werte bitte anpassen!
 db_config = {
-        "dbname": "...",
-        "user": "postgres",
-        "password": "...,
+        "dbname": "projektaufgabe1",
+        "user": "projektaufgabe1_user",
+        "password": "",
         "host": "localhost"
     }
 

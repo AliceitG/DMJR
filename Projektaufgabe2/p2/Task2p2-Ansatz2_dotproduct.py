@@ -3,9 +3,9 @@
 import psycopg2
 
 conn = psycopg2.connect(
-    dbname="...",
-    user="postgres",
-    password="...",
+    dbname="projektaufgabe1",
+    user="projektaufgabe1_user",
+    password="",
     host="localhost"
 )
 
