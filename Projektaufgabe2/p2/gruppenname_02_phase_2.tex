@@ -79,31 +79,51 @@ Zeigen Sie für das Toy Example, dass $C$ korrekt berechnet wird (z.B. via Scree
 
 \subsection*{Benchmark Definition (0.5 P):}
 
+Als Metrik verwenden wir die \textbf{Zeit für eine Matrixmultiplikation} (Durchschnitt über 3 Wiederholungen).
+Die drei Ansätze werden für alle Kombinationen $(L, S)$ verglichen.
+Die Matrizen haben die Dimensionen $A \in \mathbb{R}^{(l-1) \times l}$ und $B \in \mathbb{R}^{l \times (l-1)}$.
+
 \begin{table}[h]
 	\centering
-		\begin{center}
-			\begin{tabular}{ c c c }
-				Parameter & Interval & Kommentar\\
-				L & ... & ... \\ 
-				S & ... & ... \\  
-			\end{tabular}
-			\end{center}
-	\caption{Getestet Matrixgrößen L und sparsity Werte S}
+	\begin{tabular}{ c c c }
+		\hline
+		Parameter & Werte & Kommentar \\
+		\hline
+		L & $\{8,\, 16,\, 32,\, 64,\, 128,\, 256\}$ & Zweierpotenzen ab $2^3$; passt vollständig in den Hauptspeicher \\
+		S & $\{0.1,\, 0.3,\, 0.5,\, 0.7,\, 0.9\}$ & Sparsity-Werte; Matrix im Allgemeinen eher dicht besetzt \\
+		\hline
+	\end{tabular}
+	\caption{Getestete Matrixgrößen L und Sparsity-Werte S (30 Kombinationen)}
 	\label{tab:MatrixgrößenLUndSparsityWerteS}
 \end{table}
 
-\youranswerhere{}
-
 \subsubsection*{Auswertung (0.5 P)}
 
-Stellen Sie Ihre Messergebnisse grafisch dar. 
+Stellen Sie Ihre Messergebnisse grafisch dar.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
-		\includegraphics{results}
-	\caption{Fügen Sie Ihre Resultate als Grafik ein}
+	\includegraphics[width=\textwidth]{results}
+	\caption{Laufzeit der drei Ansätze: links gemittelt über alle Sparsity-Werte in Abhängigkeit von $L$; rechts in Abhängigkeit von $S$ bei $L=256$.}
 	\label{fig:results}
 \end{figure}
+
+\textbf{Fazit:}
+Die Messungen zeigen deutliche Unterschiede im Verhalten der drei Ansätze:
+
+\begin{itemize}
+  \item \textbf{Ansatz 1 (Sparse SQL)} profitiert stark von hoher Sparsity: Bei $L=256$ und $S=0.1$ (dichte Matrix) benötigt er ca.\ 5\,s, bei $S=0.9$ (dünne Matrix) nur ca.\ 0.09\,s.
+        Bei dichter Besetzung ist der Join über die Nicht-Null-Einträge sehr teuer.
+  \item \textbf{Ansatz 2 (Vector SQL)} ist weitgehend \textbf{sparsity-unabhängig}, da \texttt{dotproduct()} stets alle $l$ Array-Elemente durchläuft.
+        Die Laufzeit bei $L=256$ beträgt konstant ca.\ 1.3\,s, unabhängig von $S$.
+        Bei dichter Matrix ist Ansatz 2 daher besser als Ansatz 1; bei sehr dünner Matrix ist Ansatz 1 deutlich schneller.
+  \item \textbf{Ansatz 0 (Python)} überträgt die Daten aus der DB und berechnet das Ergebnis clientseitig.
+        Er überspringt Nulleinträge und skaliert daher ähnlich wie Ansatz 1 mit der Sparsity.
+        Bei $L=256$ liegt er zwischen beiden DB-Ansätzen und ist bei mittlerer Sparsity konkurrenzfähig.
+\end{itemize}
+
+Insgesamt eignet sich \textbf{Ansatz 1} am besten für dünn besetzte Matrizen, während \textbf{Ansatz 2} bei dichten Matrizen vorzuziehen ist.
+\textbf{Ansatz 0} zeigt, dass clientseitige Python-Berechnung bei kleinen bis mittleren Matrixgrößen durchaus mit datenbankinternen Ansätzen mithalten kann.
 
 
 \subsection*{Zeitmamagement}
