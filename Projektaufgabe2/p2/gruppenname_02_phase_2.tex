@@ -1,0 +1,121 @@
+\documentclass[11pt]{scrartcl}
+
+\usepackage[top=1.5cm]{geometry}
+\usepackage{url}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\newcommand{\youranswerhere}{[Your answer goes here \ldots]}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\lstdefinestyle{dmrsql}{
+  language=SQL,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{magenta!75!black},
+  stringstyle=\color{green!50!black},
+  showspaces=false,
+  showstringspaces=false,
+  commentstyle=\color{gray}}
+
+\lstdefinestyle{dmrJava}{
+  language=JAVA,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{magenta!75!black},
+  stringstyle=\color{green!50!black},
+  showspaces=false,
+  showstringspaces=false,
+  commentstyle=\color{gray}}
+
+\title{
+  \textbf{\large Projektaufgabe 2 } \\
+  Phase 2 – Legen der Basis (2.5 P) \\
+  {\large Datenmanagement jenseits von Relationen}
+}
+
+\author{
+  Gruppen Nummer (e.g. A1, B5, B3) \\
+  \large Lastname1 Firstname1, StudentID1 \\
+  \large Lastname2 Firstname2, StudentID2 
+}
+
+\begin{document}
+
+\maketitle\thispagestyle{empty}
+
+Dieses Reporting Template dient der Vorbereitung der Abgabe von Phase 2.
+
+\subsection*{Alternativer Import für Ansatz 2 (0.5 Punkte)}
+
+Zeigen Sie das create table Statement für $A$ oder $B$. 
+
+\begin{lstlisting}[style=dmrsql]
+[Create Table A ...]
+\end{lstlisting}
+
+Zeigen Sie, wie die Matrizen $A$ und $B$ des Toy Examples für Ansatz 2 in der DB aussehen.
+
+\youranswerhere{}
+
+\subsection*{Ansatz 2 (0.5 Punkte):}
+
+Geben Sie den Code der Funktion \texttt{dotproduct()} bzw. Ihrer Lösung für Ansatz 2 an.
+
+\begin{lstlisting}[style=dmrsql]
+[dotproduct() UDF ...]
+\end{lstlisting}
+
+Zeigen Sie für das Toy Example, dass $C$ korrekt berechnet wird (z.B. via Screenshot).
+
+\youranswerhere{}
+
+\subsection*{Benchmark Definition (0.5 P):}
+
+\begin{table}[h]
+	\centering
+		\begin{center}
+			\begin{tabular}{ c c c }
+				Parameter & Interval & Kommentar\\
+				L & ... & ... \\ 
+				S & ... & ... \\  
+			\end{tabular}
+			\end{center}
+	\caption{Getestet Matrixgrößen L und sparsity Werte S}
+	\label{tab:MatrixgrößenLUndSparsityWerteS}
+\end{table}
+
+\youranswerhere{}
+
+\subsubsection*{Auswertung (0.5 P)}
+
+Stellen Sie Ihre Messergebnisse grafisch dar. 
+
+\begin{figure}
+	\centering
+		\includegraphics{results}
+	\caption{Fügen Sie Ihre Resultate als Grafik ein}
+	\label{fig:results}
+\end{figure}
+
+
+\subsection*{Zeitmamagement}
+
+Benötigte Zeit pro Person (nur Phase 1): \textbf{XXX}
+
+\subsection*{References}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c}
+    \hline
+    \textbf{Important:} Reference your information sources! \tabularnewline
+    Remove this section if you use footnotes to reference your information sources. \tabularnewline
+    \hline
+  \end{tabular}
+\end{table}
+
+\end{document}
