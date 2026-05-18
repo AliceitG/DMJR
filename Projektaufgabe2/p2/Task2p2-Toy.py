@@ -15,6 +15,7 @@ cursor = conn.cursor()
 cursor.execute("""
         SELECT A_ROW.i, B_COL.j, dotproduct(A_ROW.row, B_COL.col) AS val
         FROM A_ROW, B_COL
+        WHERE dotproduct(A_ROW.row, B_COL.col) <> 0
         ORDER BY A_ROW.i, B_COL.j;
     """)
 
