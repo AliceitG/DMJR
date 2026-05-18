@@ -33,17 +33,17 @@ def import_from_sparse(conn):
     cursor = conn.cursor()
 
     # Dimensionen ermitteln
-    cursor.execute("SELECT MAX(i), MAX(j) FROM a;")
+    cursor.execute("SELECT MAX(i), MAX(j) FROM A;")
     m, l = cursor.fetchone()  # A ist m x l
 
-    cursor.execute("SELECT MAX(i), MAX(j) FROM b;")
+    cursor.execute("SELECT MAX(i), MAX(j) FROM B;")
     _, n = cursor.fetchone()  # B ist l x n
 
     # Sparse-Werte aus a und b lesen
-    cursor.execute("SELECT i, j, val FROM a;")
+    cursor.execute("SELECT i, j, val FROM A;")
     a_vals = {(i, j): val for i, j, val in cursor.fetchall()}
 
-    cursor.execute("SELECT i, j, val FROM b;")
+    cursor.execute("SELECT i, j, val FROM B;")
     b_vals = {(i, j): val for i, j, val in cursor.fetchall()}
 
     # A zeilenweise aufbauen (fehlende Einträge = 0)
