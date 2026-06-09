@@ -85,6 +85,8 @@ def build_tree(input_path: Path, output_dir: Path):
                     lines.append(f"        {field.tag}: {field.text}")
     (output_dir / 'tree_preview.txt').write_text('\n'.join(lines), encoding='utf-8')
 
+    print('\n'.join(lines))
+
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:

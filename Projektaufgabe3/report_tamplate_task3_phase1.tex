@@ -1,0 +1,197 @@
+\documentclass[11pt]{scrartcl}
+
+\usepackage[top=1.5cm]{geometry}
+\usepackage{url}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\lstdefinestyle{dmrsql}{
+  language=SQL,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{magenta!75!black},
+  stringstyle=\color{green!50!black},
+  showspaces=false,
+  showstringspaces=false,
+  commentstyle=\color{gray}}
+
+\lstdefinestyle{dmrPython}{
+  language=Python,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{magenta!75!black},
+  stringstyle=\color{green!50!black},
+  showspaces=false,
+  showstringspaces=false,
+  commentstyle=\color{gray}}
+
+\title{
+  \textbf{\large Projektaufgabe 3 } \\
+  Phase 1 – Das EDGE Modell (4 P) \\
+  {\large Datenmanagement jenseits von Relationen}
+}
+
+\author{
+  Gruppen Nummer (A17) \\
+  \large Acikyol Aleyna, 12032843 \\
+  \large Özcan Ahmet, 12311287 \\
+  \large Sadykova Nargiz, 12129337
+}
+
+\begin{document}
+
+\maketitle\thispagestyle{empty}
+
+Dieses Reporting Template dient der Vorbereitung der Abgabe von Phase 1.
+
+\subsection*{EDGE Modell Import des Toy Beispiels (1 Punkte)}
+
+Beschreiben Sie kurz, welches Verfahren (inkl. Programmiersprache) Sie für den Import verwenden. Gab es Probleme beim Implementieren des Parsers? (0.5 P).
+
+Für den XML-Import wurde Python mit der Standardbibliothek \texttt{xml.etree.ElementTree} verwendet.
+Das Dokument wird als String eingelesen, Sonderzeichen (Umlaute, \texttt{\&szlig;} etc.) werden vor dem
+Parsen per \texttt{str.replace()} normalisiert, da die DTD-Entities von \texttt{ElementTree} nicht
+automatisch aufgelöst werden. Anschließend wird der Baum in eine eigene \texttt{Node}-Klasse überführt
+und per Tiefensuche (\emph{DFS}) in die Datenbank geschrieben.
+
+Probleme gab es ausschließlich mit den HTML-Entities in den DBLP-Daten (z.\,B. \texttt{\&uuml;}),
+die \texttt{ElementTree} ohne DTD nicht kennt. Die Vorverarbeitung per \texttt{normalize\_input()}
+löst dieses Problem zuverlässig.
+
+Zeigen Sie (z.B. mittels Screenshot des Konsolenoutputs), dass Ihr Parser alle Elemente (und deren Inhalt) des Toy-Beispiels korrekt erkennt. (0.5 P).
+
+Der folgende Ausschnitt zeigt den Konsolenoutput von \texttt{phase1\_import.py} für das Toy-Beispiel
+(4 Publikationen):
+
+\begin{lstlisting}[style=dmrPython, frame=single]
+=== EDGE-Modell Toy-Beispiel (Konsolenausgabe) ===
+[bib] bib
+  [venue] vldb
+    [year] vldb_2023
+      [article] SchmittKAMM23
+        [author]: Daniel Ulrich Schmitt
+        [author]: Daniel Kocher
+        [author]: Nikolaus Augsten
+        [author]: Willi Mann
+        [author]: Alexander Miller
+        [title]: A Two-Level Signature Scheme for Efficient Query Processing ...
+        [pages]: 2686-2698
+        [year]: 2023
+        [volume]: 16
+        [journal]: Proc. VLDB Endow.
+        [number]: 11
+        [ee]: https://doi.org/10.14778/3611479.3611480
+        [url]: db/journals/pvldb/pvldb16.html#SchmittKAMM23
+      [article] SchalerHS23
+        [author]: ...
+        ...
+  [venue] sigmod
+    [year] sigmod_2022
+      [inproceedings] HutterAK0L22
+        ...
+      [inproceedings] ...
+        ...
+\end{lstlisting}
+
+Alle Elemente und deren Inhalte werden korrekt erkannt. Die Attribute \texttt{mdate} und \texttt{orcid}
+werden wie gefordert ignoriert.
+
+Geben Sie die Definition Ihrer Tabellen im Edge Modell an. Zeigen Sie (einen Ausschnitt) des Toy Beispiels nach dem Import als Edge Model in die DB (1 P).
+
+Das EDGE-Modell besteht aus zwei Tabellen. Die \textbf{Node}-Tabelle speichert alle Knoten mit einem
+numerischen Primärschlüssel (\texttt{id}), einem symbolischen Bezeichner (\texttt{s\_id}, z.\,B.
+Publikationsschlüssel oder Venue-Name), dem Knotentyp (\texttt{type}) sowie dem Textinhalt
+(\texttt{content}, nur für Blattknoten). Die \textbf{Edge}-Tabelle hält alle gerichteten Eltern-Kind-Kanten
+als Paare (\texttt{from}, \texttt{to}).
+
+\begin{lstlisting}[style=dmrsql, frame=single]
+CREATE TABLE node (
+    id      SERIAL PRIMARY KEY,
+    s_id    VARCHAR,
+    type    VARCHAR NOT NULL,
+    content TEXT
+);
+
+CREATE TABLE edge (
+    "from"  INTEGER NOT NULL REFERENCES node(id),
+    "to"    INTEGER NOT NULL REFERENCES node(id),
+    PRIMARY KEY ("from", "to")
+);
+\end{lstlisting}
+
+Ausschnitt des importierten Toy-Beispiels (erste Publikation, analog zu Tabelle 1 der Aufgabenstellung):
+
+\begin{table}[H]
+\centering
+\begin{tabular}{r l l l | r r}
+\toprule
+\multicolumn{4}{c|}{\textbf{Node}} & \multicolumn{2}{c}{\textbf{Edge}} \\
+\texttt{id} & \texttt{s\_id} & \texttt{type} & \texttt{content} & \texttt{from} & \texttt{to} \\
+\midrule
+0 & bib            & bib          & null                  & 0 & 1 \\
+1 & vldb           & venue        & null                  & 1 & 2 \\
+2 & vldb\_2023     & year         & null                  & 2 & 3 \\
+3 & SchmittKAMM23  & article      & null                  & 3 & 4 \\
+4 & null           & author       & Daniel Ulrich Schmitt & 3 & 5 \\
+5 & null           & author       & Daniel Kocher         & 3 & 6 \\
+6 & null           & author       & Nikolaus Augsten      & 3 & 7 \\
+7 & null           & author       & Willi Mann            & 3 & 8 \\
+8 & null           & author       & Alexander Miller      & 3 & 9 \\
+9 & null           & title        & A Two-Level Sig. [...] & 3 & 10 \\
+\ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+\bottomrule
+\end{tabular}
+\caption{Ausschnitt des Toy-Beispiels nach Import ins EDGE-Modell}
+\end{table}
+
+\subsection*{Berechnung der XPath Achsen im EDGE Modell (2 Punkte)}
+
+Die vier XPath-Achsen (\texttt{ancestor}, \texttt{descendant}, \texttt{following-sibling},
+\texttt{preceding-sibling}) werden jeweils als rekursive SQL-Anfrage (\texttt{WITH RECURSIVE})
+in der Datenbank berechnet. Python dient ausschließlich als Controller, der die Anfrage absetzt
+und das Ergebnis ausgibt.
+
+Geben Sie für jede der geforderten Achsen, die Knotenmenge des Ergebnisses, sowie die Anzahl der Ergebnisknoten aus.
+
+\begin{table}[h]
+  \centering
+    \begin{center}
+      \begin{tabular}{ l | c c }
+        \toprule
+        Achse & Ergebnisknoten IDs & Ergebnisgröße\\
+        \midrule
+        ancestor (Daniel Ulrich Schmitt)    & 3, 2, 1, 0              & 4  \\
+        descendants (vldb\_2023, id=2)      & 3--16, 17--29           & 27 \\
+        following SchmittKAMM23             & 17 (SchalerHS23)        & 1  \\
+        preceeding SchmittKAMM23            & (leer)                  & 0  \\
+        following SchalerHS23               & (leer)                  & 0  \\
+        preceeding SchalerHS23              & 3 (SchmittKAMM23)       & 1  \\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+  \caption{Ergebnisse der XPath-Berechnung}
+  \label{tab:ErgebnisseDerXPathBerechnug}
+\end{table}
+
+Sofern Sie Annahmen zum Aufbau der Daten getroffen haben, geben Sie diese nachfolgend an:
+\begin{itemize}
+  \item Die Dokumentreihenfolge wird durch die aufsteigenden \texttt{node.id}-Werte abgebildet,
+        da alle Knoten in DFS-Reihenfolge (Vorbestellung) in die Datenbank eingefügt werden.
+        \texttt{following-sibling} entspricht damit Geschwisterknoten mit \texttt{id > v\_id},
+        \texttt{preceding-sibling} entsprechend \texttt{id < v\_id}.
+  \item Jeder Knoten hat höchstens einen Elternknoten (Baumstruktur), sodass die Elternsuche
+        in der \texttt{edge}-Tabelle eindeutig ist.
+  \item Die Attribute \texttt{mdate} und \texttt{orcid} werden beim Import ignoriert.
+\end{itemize}
+
+\subsection*{Zeitmamagement}
+
+Benötigte Zeit pro Person (nur Phase 1): \textbf{ca. 3 Stunden}
+
+\end{document}
