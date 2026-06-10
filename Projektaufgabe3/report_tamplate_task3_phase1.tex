@@ -80,23 +80,60 @@ Der folgende Ausschnitt zeigt den Konsolenoutput von \texttt{phase1\_import.py} 
         [author]: Nikolaus Augsten
         [author]: Willi Mann
         [author]: Alexander Miller
-        [title]: A Two-Level Signature Scheme for Efficient Query Processing ...
+        [title]: A Two-Level Signature Scheme for Stable Set Similarity Joins.
         [pages]: 2686-2698
         [year]: 2023
         [volume]: 16
         [journal]: Proc. VLDB Endow.
         [number]: 11
+        [ee]: https://www.vldb.org/pvldb/vol16/p2686-schmitt.pdf
         [ee]: https://doi.org/10.14778/3611479.3611480
         [url]: db/journals/pvldb/pvldb16.html#SchmittKAMM23
       [article] SchalerHS23
-        [author]: ...
-        ...
+        [author]: Christine Schaeler
+        [author]: Thomas Huetter
+        [author]: Martin Schaeler
+        [title]: Benchmarking the Utility of w-event Differential Privacy ...
+        [pages]: 1830-1842
+        [year]: 2023
+        [volume]: 16
+        [journal]: Proc. VLDB Endow.
+        [number]: 8
+        [ee]: https://www.vldb.org/pvldb/vol16/p1830-schaler.pdf
+        [ee]: https://doi.org/10.14778/3594512.3594515
+        [url]: db/journals/pvldb/pvldb16.html#SchalerHS23
   [venue] sigmod
     [year] sigmod_2022
       [inproceedings] HutterAK0L22
-        ...
-      [inproceedings] ...
-        ...
+        [author]: Thomas Huetter
+        [author]: Nikolaus Augsten
+        [author]: Christoph M. Kirsch
+        [author]: Michael J. Carey 0001
+        [author]: Chen Li 0001
+        [title]: JEDI: These aren't the JSON documents you're looking for?
+        [pages]: 1584-1597
+        [year]: 2022
+        [booktitle]: SIGMOD Conference
+        [ee]: https://doi.org/10.1145/3514221.3517850
+        [crossref]: conf/sigmod/2022
+        [url]: db/conf/sigmod/sigmod2022.html#HutterAK0L22
+  [venue] pacmmod
+    [year] pacmmod_2023
+      [article] ThielKAHMS23
+        [author]: Konstantin Emil Thiel
+        [author]: Daniel Kocher
+        [author]: Nikolaus Augsten
+        [author]: Thomas Huetter
+        [author]: Willi Mann
+        [author]: Daniel Ulrich Schmitt
+        [title]: FINEX: A Fast Index for Exact & Flexible Density-Based ...
+        [pages]: 71:1-71:25
+        [year]: 2023
+        [volume]: 1
+        [journal]: Proc. ACM Manag. Data
+        [number]: 1
+        [ee]: https://doi.org/10.1145/3588925
+        [url]: db/journals/pacmmod/pacmmod1.html#ThielKAHMS23
 \end{lstlisting}
 
 Alle Elemente und deren Inhalte werden korrekt erkannt. Die Attribute \texttt{mdate} und \texttt{orcid}
@@ -166,12 +203,12 @@ Geben Sie für jede der geforderten Achsen, die Knotenmenge des Ergebnisses, sow
         \toprule
         Achse & Ergebnisknoten IDs & Ergebnisgröße\\
         \midrule
-        ancestor (Daniel Ulrich Schmitt)    & 3, 2, 1, 0              & 4  \\
-        descendants (vldb\_2023, id=2)      & 3--16, 17--29           & 27 \\
-        following SchmittKAMM23             & 17 (SchalerHS23)        & 1  \\
-        preceeding SchmittKAMM23            & (leer)                  & 0  \\
-        following SchalerHS23               & (leer)                  & 0  \\
-        preceeding SchalerHS23              & 3 (SchmittKAMM23)       & 1  \\
+        ancestor (Daniel Ulrich Schmitt, id=5)  & 4, 3, 2, 1          & 4  \\
+        descendants (vldb\_2023, id=3)          & 4--31               & 28 \\
+        following SchmittKAMM23 (id=4)          & 19 (SchalerHS23)    & 1  \\
+        preceeding SchmittKAMM23 (id=4)         & (leer)              & 0  \\
+        following SchalerHS23 (id=19)           & (leer)              & 0  \\
+        preceeding SchalerHS23 (id=19)          & 4 (SchmittKAMM23)   & 1  \\
         \bottomrule
       \end{tabular}
     \end{center}

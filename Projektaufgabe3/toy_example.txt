@@ -1,0 +1,62 @@
+<bib>
+	<article mdate="2024-02-05" key="journals/pvldb/SchmittKAMM23">
+		<author orcid="0009-0005-7656-7526">Daniel Ulrich Schmitt</author>
+		<author>Daniel Kocher</author>
+		<author orcid="0000-0002-3036-6201">Nikolaus Augsten</author>
+		<author>Willi Mann</author>
+		<author>Alexander Miller</author>
+		<title>A Two-Level Signature Scheme for Stable Set Similarity Joins.</title>
+		<pages>2686-2698</pages>
+		<year>2023</year>
+		<volume>16</volume>
+		<journal>Proc. VLDB Endow.</journal>
+		<number>11</number>
+		<ee type="oa">https://www.vldb.org/pvldb/vol16/p2686-schmitt.pdf</ee>
+		<ee>https://doi.org/10.14778/3611479.3611480</ee>
+		<url>db/journals/pvldb/pvldb16.html#SchmittKAMM23</url>
+	</article>
+	<inproceedings mdate="2022-08-03" key="conf/sigmod/HutterAK0L22">
+		<author>Thomas H&uuml;tter</author>
+		<author>Nikolaus Augsten</author>
+		<author>Christoph M. Kirsch</author>
+		<author>Michael J. Carey 0001</author>
+		<author>Chen Li 0001</author>
+		<title>JEDI: These aren't the JSON documents you're looking for?</title>
+		<pages>1584-1597</pages>
+		<year>2022</year>
+		<booktitle>SIGMOD Conference</booktitle>
+		<ee>https://doi.org/10.1145/3514221.3517850</ee>
+		<crossref>conf/sigmod/2022</crossref>
+		<url>db/conf/sigmod/sigmod2022.html#HutterAK0L22</url>
+	</inproceedings>
+	<article mdate="2023-06-15" key="journals/pacmmod/ThielKAHMS23">
+		<author orcid="0009-0005-6572-2228">Konstantin Emil Thiel</author>
+		<author orcid="0009-0003-3742-5555">Daniel Kocher</author>
+		<author orcid="0000-0002-3036-6201">Nikolaus Augsten</author>
+		<author orcid="0000-0002-7190-6825">Thomas H&uuml;tter</author>
+		<author orcid="0000-0002-6460-6306">Willi Mann</author>
+		<author orcid="0009-0005-7656-7526">Daniel Ulrich Schmitt</author>
+		<title>FINEX: A Fast Index for Exact &amp; Flexible Density-Based Clustering.</title>
+		<pages>71:1-71:25</pages>
+		<year>2023</year>
+		<volume>1</volume>
+		<journal>Proc. ACM Manag. Data</journal>
+		<number>1</number>
+		<ee>https://doi.org/10.1145/3588925</ee>
+		<url>db/journals/pacmmod/pacmmod1.html#ThielKAHMS23</url>
+	</article>
+	<article mdate="2024-02-05" key="journals/pvldb/SchalerHS23">
+		<author>Christine Sch&auml;ler</author>
+		<author orcid="0000-0002-7190-6825">Thomas H&uuml;tter</author>
+		<author>Martin Sch&auml;ler</author>
+		<title>Benchmarking the Utility of w-event Differential Privacy Mechanisms - When Baselines Become Mighty Competitors.</title>
+		<pages>1830-1842</pages>
+		<year>2023</year>
+		<volume>16</volume>
+		<journal>Proc. VLDB Endow.</journal>
+		<number>8</number>
+		<ee type="oa">https://www.vldb.org/pvldb/vol16/p1830-schaler.pdf</ee>
+		<ee>https://doi.org/10.14778/3594512.3594515</ee>
+		<url>db/journals/pvldb/pvldb16.html#SchalerHS23</url>
+	</article>
+</bib>
