@@ -1,0 +1,31 @@
+def annotate_xml(elem, counter=1, rows_accel=None, rows_content=None, rows_attribute=None, parent_pre=None):
+    if rows_accel is None:
+        rows_accel = []
+    if rows_content is None:
+        rows_content = []
+    if rows_attribute is None:
+        rows_attribute = []
+
+    my_pre = counter
+    counter += 1
+
+    name = elem.tag
+    kind = 'element'
+    row_index = len(rows_accel)
+    rows_accel.append((my_pre, None, parent_pre, kind, name))
+
+    text = (elem.text or '').strip()
+    if text:
+        rows_content.append((my_pre, text))
+
+    for attr_name, attr_value in elem.attrib.items():
+        rows_attribute.append((my_pre, f"{attr_name}={attr_value}"))
+
+    for child in list(elem):
+        counter = annotate_xml(child, counter, rows_accel, rows_content, rows_attribute, my_pre)
+
+    my_post = counter
+    counter += 1
+    rows_accel[row_index] = (my_pre, my_post, parent_pre, kind, name)
+
+    return counter
