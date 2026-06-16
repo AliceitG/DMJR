@@ -39,9 +39,9 @@
 }
 
 \author{
-  Gruppen Nummer (e.g. A1, B5, B3) \\
-  \large Lastname1 Firstname1, StudentID1 \\
-  \large Lastname2 Firstname2, StudentID2 
+  Gruppe A17 \\
+  \large Acikyol Aleyna, 12032843 \\
+  \large Özcan Ahmet, 12311287 \\
   \large Sadykova Nargiz, 12129337
 }
 
@@ -53,23 +53,71 @@ Dieses Reporting Template dient der Vorbereitung der Abgabe von Phase 2.
 
 \subsection*{Verwendung der Daten aus der DBLP (1 Punkt)}
 
+Die DBLP-Daten wurden von \url{https://dblp.org/xml/dblp.xml.gz} heruntergeladen (ca.\ 4\,GB nach dem Entpacken).
+Für die speichereffiziente Verarbeitung der großen XML-Datei wurde \texttt{lxml.etree.iterparse}
+verwendet, das Datensätze (\texttt{article}, \texttt{inproceedings}) Stück für Stück liest und
+verarbeitete Elemente sofort aus dem Arbeitsspeicher entfernt.
+
+Venue-Zuordnung erfolgt ausschließlich anhand des \texttt{key}-Attributs:
+\begin{itemize}
+  \item \texttt{journals/pvldb/} oder \texttt{conf/vldb/} $\Rightarrow$ \textbf{VLDB}
+  \item \texttt{journals/pacmmod/} oder \texttt{conf/sigmod/} $\Rightarrow$ \textbf{SIGMOD}
+  \item \texttt{conf/icde/} $\Rightarrow$ \textbf{ICDE}
+\end{itemize}
+
+Das Extraktions-Skript \texttt{phase3\_extract\_dblp.py} schreibt alle gefundenen Datensätze
+in \texttt{my\_small\_bib.xml} (Wurzelknoten \texttt{bib}, identisches Format wie \texttt{toy\_example.txt}).
+
 Geben Sie die folgende Kennzahl bezogen auf \texttt{my\_small\_bib.xml} an:
 
 \begin{itemize}
-	\item Anzahl Publikationen von 'Nikolaus Augsten'\footnote{Korrektheit und Vollständigkeit können Sie unter https://dblp.org/pid/76/3961.html überprüfen.}
-		\begin{itemize}
-		\item ICDE: TODO
-		\item VLDB: TODO
-		\item SIGMOD: TODO
-	\end{itemize}
-	\item Position (Zeilennummer von, bis) der Publikationen des Toy-Beispiels in \texttt{my\_small\_bib.xml}
-	
-	\begin{itemize}
-		\item SchmittKAMM23: TODO Lines
-		\item HutterAK0L22: TODO Lines
-		\item SchalerHS23: TODO Lines
-	\end{itemize}
-	\item Größe der Datei \texttt{my\_small\_bib.xml} in kB und Zeilenanzahl: TODO
+  \item Anzahl Publikationen von \textit{Nikolaus Augsten}%
+    \footnote{Korrektheit und Vollständigkeit: \url{https://dblp.org/pid/76/3961.html}.}
+    \begin{itemize}
+      \item ICDE:   \textbf{[TODO nach Skript-Ausführung]}
+      \item VLDB:   \textbf{[TODO nach Skript-Ausführung]}
+      \item SIGMOD: \textbf{[TODO nach Skript-Ausführung]}
+    \end{itemize}
+  \item Position (Zeilennummer von\,--\,bis) der Toy-Beispiel-Publikationen in \texttt{my\_small\_bib.xml}
+    \begin{itemize}
+      \item \texttt{SchmittKAMM23}: \textbf{[TODO nach Skript-Ausführung]}
+      \item \texttt{HutterAK0L22}:  \textbf{[TODO nach Skript-Ausführung]}
+      \item \texttt{SchalerHS23}:   \textbf{[TODO nach Skript-Ausführung]}
+    \end{itemize}
+  \item Dateigröße von \texttt{my\_small\_bib.xml} in kB und Zeilenanzahl:
+        \textbf{[TODO nach Skript-Ausführung]}
+\end{itemize}
+
+\textbf{Korrektheitsprüfung:} Das Skript gibt nach der Extraktion automatisch aus, ob alle vier
+Toy-Beispiel-Artikel (\texttt{SchmittKAMM23}, \texttt{HutterAK0L22}, \texttt{ThielKAHMS23},
+\texttt{SchalerHS23}) in \texttt{my\_small\_bib.xml} enthalten sind.
+
+\subsubsection*{Transformation und Import ins EDGE-Modell (0,5 Punkte)}
+
+Das Skript \texttt{phase3\_edge\_import.py} liest \texttt{my\_small\_bib.xml} und baut
+daraus denselben EDGE-Baum auf wie in Phase~1 (Wurzel \texttt{bib} $\to$ Venue $\to$
+Jahr $\to$ Publikation $\to$ Felder). Der Import nutzt dieselben Tabellen \texttt{node}
+und \texttt{edge} aus Phase~1:
+
+\begin{lstlisting}[style=dmrsql, frame=single]
+CREATE TABLE node (
+    id      SERIAL PRIMARY KEY,
+    s_id    VARCHAR,
+    type    VARCHAR NOT NULL,
+    content TEXT
+);
+
+CREATE TABLE edge (
+    "from"  INTEGER NOT NULL REFERENCES node(id),
+    "to"    INTEGER NOT NULL REFERENCES node(id),
+    PRIMARY KEY ("from", "to")
+);
+\end{lstlisting}
+
+Anzahl der Tupel nach dem Import:
+\begin{itemize}
+  \item Relation \texttt{node}: \textbf{[TODO nach Skript-Ausführung]}
+  \item Relation \texttt{edge}: \textbf{[TODO nach Skript-Ausführung]}
 \end{itemize}
 
 
@@ -168,7 +216,12 @@ Zeigen Sie, dass die Berechnung der Achsen für die Beispiele aus Phase 1 hier d
 
 \subsection*{Zeitmamagement}
 
-Benötigte Zeit pro Person (nur Phase 2): \textbf{Sadykova Nargiz: 4.5 Std.}
+Benötigte Zeit pro Person (nur Phase 2):
+\begin{itemize}
+  \item \textbf{Acikyol Aleyna:} TODO Std.
+  \item \textbf{Özcan Ahmet:} TODO Std.
+  \item \textbf{Sadykova Nargiz:} 4.5 Std.
+\end{itemize}
 
 
 \end{document}
