@@ -42,6 +42,7 @@
   Gruppen Nummer (e.g. A1, B5, B3) \\
   \large Lastname1 Firstname1, StudentID1 \\
   \large Lastname2 Firstname2, StudentID2 
+  \large Sadykova Nargiz, 12129337
 }
 
 \begin{document}
@@ -76,11 +77,51 @@ Geben Sie die folgende Kennzahl bezogen auf \texttt{my\_small\_bib.xml} an:
 \subsection*{Schemaerstellung (1 Punkt).}
 Geben Sie die Create Table statements aller von Ihnen angelegten Tabellen an:
 \begin{lstlisting}[style=dmrsql]
-[Create Table accel ...]
+postgres=# CREATE TABLE accel (
+  pre    INTEGER,
+  post   INTEGER,
+  parent INTEGER,
+  kind   TEXT,
+  name   TEXT
+);
+
+CREATE TABLE content (
+  pre  INTEGER,
+  text TEXT
+);
+CREATE TABLE
+CREATE TABLE
+postgres=# CREATE TABLE attribute ( pre  INTEGER,
+  text TEXT
+);
 \end{lstlisting}
 
 \subsection*{Pre-/Post-Order Annotation (1 Punkt).}
 Definieren Sie sich einen \textit{Ausschnitt} aus \texttt{toy\_example.txt}. Berechnen Sie hierfür händisch die Pre-/Post-Order Annotation. Inkludieren Sie diese als Foto / Screenshot oder ähnliches in dieses Dokument. Zeigen Sie dann, dass Ihre Lösung hierfür dieselben Ergebnisse liefert. Sie können Die Mittels Foto / Screenshot belegen oder in der Übung zeigen.
+
+Ausschnitt aus toy_example.txt:
+<bib>
+	<article mdate="2024-02-05" key="journals/pvldb/SchmittKAMM23">
+		<author orcid="0009-0005-7656-7526">Daniel Ulrich Schmitt</author>
+		<author>Daniel Kocher</author>
+		<author orcid="0000-0002-3036-6201">Nikolaus Augsten</author>
+		<author>Willi Mann</author>
+		<author>Alexander Miller</author>
+		<title>A Two-Level Signature Scheme for Stable Set Similarity Joins.</title>
+		<pages>2686-2698</pages>
+		<year>2023</year>
+		<volume>16</volume>
+		<journal>Proc. VLDB Endow.</journal>
+		<number>11</number>
+		<ee type="oa">https://www.vldb.org/pvldb/vol16/p2686-schmitt.pdf</ee>
+		<ee>https://doi.org/10.14778/3611479.3611480</ee>
+		<url>db/journals/pvldb/pvldb16.html#SchmittKAMM23</url>
+	</article>
+	
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{annotatedtree.png}
+\end{figure}
 
 \subsection*{Achse als Fenster (2 Punkt)}
 Zeigen Sie, dass die Berechnung der Achsen für die Beispiele aus Phase 1 hier die gleichen Ergebnisse erzeugen:
@@ -127,7 +168,7 @@ Zeigen Sie, dass die Berechnung der Achsen für die Beispiele aus Phase 1 hier d
 
 \subsection*{Zeitmamagement}
 
-Benötigte Zeit pro Person (nur Phase 2): \textbf{XXX}
+Benötigte Zeit pro Person (nur Phase 2): \textbf{Sadykova Nargiz: 4.5 Std.}
 
 
 \end{document}
