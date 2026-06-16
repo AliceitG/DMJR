@@ -1,13 +1,50 @@
+import random
 import psycopg2
 from psycopg2.extras import execute_values
 
 db_config = {
-    "dbname": "projektaufgabe1",
-    "user": "projektaufgabe1_user",
+    "dbname": "",
+    "user": "",
     "password": "",
-    "host": "localhost"
+    "host": ""
 }
 
+def generate(l, sparsity, conn):
+
+
+    if l < 2:
+        raise ValueError("l muss mindestens 2 sein")
+    if not (0.0 <= sparsity <= 1.0):
+        raise ValueError("sparsity muss zwischen 0 und 1 liegen")
+
+
+    m = l - 1
+    n = l - 1
+
+    # A: m x l
+    A = [[random.uniform(1.0, 10.0) for _ in range(l)] for _ in range(m)]
+    # B: l x n
+    B = [[random.uniform(1.0, 10.0) for _ in range(n)] for _ in range(l)]
+
+    total_A = m * l
+    total_B = l * n
+
+    zeros_in_A = round(sparsity * total_A)
+    zeros_in_B = round(sparsity * total_B)
+
+    positions_A = [(i, j) for i in range(m) for j in range(l)]
+    positions_B = [(i, j) for i in range(l) for j in range(n)]
+
+    random.shuffle(positions_A)
+    random.shuffle(positions_B)
+
+
+    for i, j in positions_A[:zeros_in_A]:
+        A[i][j] = 0.0
+    for i, j in positions_B[:zeros_in_B]:
+        B[i][j] = 0.0
+
+    return A, B
 
 def create_tables(conn):
     cursor = conn.cursor()

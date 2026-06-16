@@ -17,7 +17,7 @@ b = [
 
 """ C 4x5
     c = a x b 
-    Ausgerechnet (wenn ich mcih nicht verrechnet hab): 
+    Ausgerechnet: 
     c = [
         [17, 0, 7, 16, 7],
         [88, 63, 7, 16, 64],
@@ -47,9 +47,9 @@ def import_matrix(matrix, table_name, cursor):
 
 # Setup TODO andere nutzer bitte angaben ändern
 conn = psycopg2.connect(
-    dbname="projektaufgabe1",
-    user="projektaufgabe1_user",
-    password="1234",
+    dbname="toydb",
+    user="postgres",
+    password="wortpasst",
     host="localhost"
 )
 cur = conn.cursor()

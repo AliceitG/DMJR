@@ -13,9 +13,20 @@ b = [
     [4, 0, 0, 2, 1]
 ]
 
+""" C 4x5
+    c = a x b 
+    Ausgerechnet: 
+    c = [
+        [17, 0, 7, 16, 7],
+        [88, 63, 7, 16, 64],
+        [109, 72, 71, 90, 100],
+        [28, 0, 28, 44, 18]
+    ]
+"""
+
 
 def matrixmult(A, B):
-    """C = A x B auf Client-Seite (also reine Mathe??? fehlt da was???)"""
+    """C = A x B auf Client-Seite"""
 
     m = len(A)
     l = len(A[0])

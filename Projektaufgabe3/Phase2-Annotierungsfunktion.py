@@ -1,3 +1,5 @@
+
+
 def annotate_xml(elem, counter=1, rows_accel=None, rows_content=None, rows_attribute=None, parent_pre=None):
     if rows_accel is None:
         rows_accel = []
@@ -30,7 +32,7 @@ def annotate_xml(elem, counter=1, rows_accel=None, rows_content=None, rows_attri
 
     return counter
 
-//Test für ganzes Toy-Beispiel und einen Teilabschnitt:
+# Test für ganzes Toy-Beispiel und einen Teilabschnitt:
 
 accel_rows = []
     content_rows = []
