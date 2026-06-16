@@ -1,3 +1,6 @@
+from pathlib import Path
+import sys
+from Phase2_Transformation_in_EDGE import build_tree
 
 
 def annotate_xml(elem, counter=1, rows_accel=None, rows_content=None, rows_attribute=None, parent_pre=None):
@@ -33,8 +36,12 @@ def annotate_xml(elem, counter=1, rows_accel=None, rows_content=None, rows_attri
     return counter
 
 # Test für ganzes Toy-Beispiel und einen Teilabschnitt:
+if __name__ == "__main__":
+    input_path = Path(sys.argv[1])
+    output_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('output_tree')
+    edge_root = build_tree(input_path, output_dir)
 
-accel_rows = []
+    accel_rows = []
     content_rows = []
     attribute_rows = []
 
