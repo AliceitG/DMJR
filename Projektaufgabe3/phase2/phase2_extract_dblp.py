@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Schritt 1 von Phase 3:
+Schritt 1 von Phase 2:
 Extrahiert alle VLDB-, SIGMOD- und ICDE-Publikationen aus dblp.xml
 und schreibt sie in my_small_bib.xml.
 
@@ -45,22 +45,20 @@ def extract_dblp(dblp_path: Path, output_path: Path) -> dict[str, int]:
     with open(output_path, 'wb') as out:
         out.write(b'<?xml version="1.0" encoding="utf-8"?>\n<bib>\n')
 
+        # WICHTIG: tag=... filtert, sodass das 'end'-Event nur für ganze
+        # article/inproceedings-Knoten feuert, nicht schon für jedes
+        # einzelne Kindelement (author, title, ...). Sonst würde der
+        # Cleanup unten die Kinder löschen, bevor der Datensatz fertig ist.
         context = etree.iterparse(
             str(dblp_path),
             events=('end',),
+            tag=list(RECORD_TAGS),
             load_dtd=True,
             resolve_entities=True,
             no_network=True,
         )
 
         for _, elem in context:
-            if elem.tag not in RECORD_TAGS:
-                # Nicht-relevante Elemente sofort freigeben
-                elem.clear()
-                while elem.getprevious() is not None:
-                    del elem.getparent()[0]
-                continue
-
             key = elem.get('key', '')
             venue = get_venue(key)
             if venue is not None:

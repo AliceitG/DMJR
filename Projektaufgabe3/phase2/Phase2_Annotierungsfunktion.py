@@ -1,6 +1,14 @@
 from pathlib import Path
 import sys
+import psycopg2
 from Phase2_Transformation_in_EDGE import build_tree
+
+db_config = {
+    "dbname": "projektaufgabe1",
+    "user": "projektaufgabe1_user",
+    "password": "1234",
+    "host": "localhost",
+}
 
 
 def annotate_xml(elem, counter=1, rows_accel=None, rows_content=None, rows_attribute=None, parent_pre=None):
@@ -35,11 +43,38 @@ def annotate_xml(elem, counter=1, rows_accel=None, rows_content=None, rows_attri
 
     return counter
 
+
+def insert_to_db(rows_accel, rows_content, rows_attribute):
+    conn = psycopg2.connect(**db_config)
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                cur.executemany(
+                    "INSERT INTO accel (pre, post, parent, kind, name) VALUES (%s,%s,%s,%s,%s)",
+                    rows_accel,
+                )
+                cur.executemany(
+                    "INSERT INTO content (pre, text) VALUES (%s,%s)",
+                    rows_content,
+                )
+                cur.executemany(
+                    "INSERT INTO attribute (pre, text) VALUES (%s,%s)",
+                    rows_attribute,
+                )
+        print("DB-Import von accel/content/attribute erfolgreich.")
+    finally:
+        conn.close()
+
+
 # Test für ganzes Toy-Beispiel und einen Teilabschnitt:
 if __name__ == "__main__":
     input_path = Path(sys.argv[1])
     output_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('output_tree')
     edge_root = build_tree(input_path, output_dir)
+
+    if edge_root is None:
+        print("FEHLER: build_tree hat None zurückgegeben.")
+        sys.exit(1)
 
     accel_rows = []
     content_rows = []
@@ -51,13 +86,20 @@ if __name__ == "__main__":
     for row in accel_rows:
         print(row)
 
-    print('\\nCONTENT')
+    print('\nCONTENT')
     for row in content_rows:
         print(row)
 
-    print('\\nATTRIBUTE')
+    print('\nATTRIBUTE')
     for row in attribute_rows:
         print(row)
+
+    # In Datenbank importieren
+    try:
+        insert_to_db(accel_rows, content_rows, attribute_rows)
+    except Exception as e:
+        print(f"DB-Import fehlgeschlagen (tabellen vorhanden?): {e}")
+
     target_key = 'SchmittKAMM23'
     target_article = None
 

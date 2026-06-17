@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Schritt 2 von Phase 3:
+Schritt 2 von Phase 2 (DBLP-Daten):
 Liest my_small_bib.xml, baut daraus den EDGE-Modell-Baum auf
 und importiert ihn in PostgreSQL (Relationen node und edge).
 
 Verwendung:
-    python phase3_edge_import.py [my_small_bib.xml]
+    python phase2_edge_import.py [my_small_bib.xml]
 
 Datenbankschema (identisch mit phase1_tables.sql):
     node(id SERIAL PRIMARY KEY, s_id VARCHAR, type VARCHAR, content TEXT)

@@ -86,6 +86,7 @@ def build_tree(input_path: Path, output_dir: Path):
     (output_dir / 'tree_preview.txt').write_text('\n'.join(lines), encoding='utf-8')
 
     print('\n'.join(lines))
+    return edge_root
 
 
 if __name__ == '__main__':
