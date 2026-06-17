@@ -9,6 +9,8 @@ from pathlib import Path
 from Phase2_Transformation_in_EDGE import build_tree
 from Phase2_Annotierungsfunktion import annotate_xml
 
+import xml.etree.ElementTree as ET
+
 db_config = {
     "dbname": "toydb",
     "user": "postgres",
@@ -202,7 +204,8 @@ if __name__ == "__main__":
 
     input_path = Path(sys.argv[1])
     output_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('output_tree')
-    edge_root = build_tree(input_path, output_dir)
+    build_tree(input_path, output_dir)
+    edge_root = ET.parse(output_dir / "edge_model.xml").getroot()
 
     conn = psycopg2.connect(**db_config)
 
