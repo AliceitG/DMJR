@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+Projektaufgabe3/dblp.xml
+Projektaufgabe3/dblp.xml.gz
+Projektaufgabe3/my_small_bib.xml
+Projektaufgabe3/output_tree/
