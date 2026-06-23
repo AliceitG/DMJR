@@ -11,7 +11,8 @@ CREATE TABLE content (
   text TEXT
 );
 
-CREATE TABLE attribute ( pre  INTEGER,
+CREATE TABLE attribute (
+  pre  INTEGER,
   text TEXT
 );
 
