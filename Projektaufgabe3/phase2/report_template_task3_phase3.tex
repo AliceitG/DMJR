@@ -1,0 +1,130 @@
+\documentclass[11pt]{scrartcl}
+
+\usepackage[top=1.5cm]{geometry}
+\usepackage{url}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\newcommand{\youranswerhere}{[Your answer goes here \ldots]}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\lstdefinestyle{dmrsql}{
+  language=SQL,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{magenta!75!black},
+  stringstyle=\color{green!50!black},
+  showspaces=false,
+  showstringspaces=false,
+  commentstyle=\color{gray}}
+
+\lstdefinestyle{dmrJava}{
+  language=JAVA,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{magenta!75!black},
+  stringstyle=\color{green!50!black},
+  showspaces=false,
+  showstringspaces=false,
+  commentstyle=\color{gray}}
+
+\title{
+  \textbf{\large Projektaufgabe 3 } \\
+  Phase 3 – Implementierung des XPath Accelerators (3.5 P) \\
+  {\large Datenmanagement jenseits von Relationen}
+}
+
+\author{
+  Gruppen Nummer (e.g. A1, B5, B3) \\
+  \large Lastname1 Firstname1, StudentID1 \\
+  \large Lastname2 Firstname2, StudentID2 
+}
+
+\begin{document}
+
+\maketitle\thispagestyle{empty}
+
+Dieses Reporting Template dient der Vorbereitung der Abgabe von Phase 3. 
+
+\subsection*{Verkleinern der Fensteranfrage (0.5 P)}
+
+Zeigen Sie, dass die Berechnung der Achsen für die Beispiele aus Phase 1 hier die gleichen Ergebnisse erzeugen:
+
+\begin{table}[h]
+	\centering
+		\begin{center}
+			\begin{tabular}{ l | c c }
+				\toprule
+				Achse & Ergebnisknoten ID's & Ergebnisgröße\\
+				\midrule
+				ancestor & ... & ... \\ 
+				descendants & ... & ... \\  
+				following SchmittKAMM23& ... & ... \\  
+				preceeding SchmittKAMM23 & ... & ... \\ 
+				following SchalerHS23& ... & ... \\  
+				preceeding SchalerHS23& ... & ... \\ 
+				\bottomrule
+			\end{tabular}
+			\end{center}
+	\caption{Ergebnisse der XPath-Berechnung auf Edge Modell aus Phase 1}
+	\label{tab:ErgebnisseDerXPathBerechnug}
+\end{table}
+
+\begin{table}[h]
+	\centering
+		\begin{center}
+			\begin{tabular}{ l | c c }
+				\toprule
+				Achse & Ergebnisknoten ID's & Ergebnisgröße\\
+				\midrule
+				ancestor & ... & ... \\ 
+				descendants & ... & ... \\  
+				following SchmittKAMM23& ... & ... \\  
+				preceeding SchmittKAMM23 & ... & ... \\ 
+				following SchalerHS23& ... & ... \\  
+				preceeding SchalerHS23& ... & ... \\ 
+				\bottomrule
+			\end{tabular}
+			\end{center}
+	\caption{Ergebnisse der XPath-Berechnung des XPath-Accelerators aus Phase 3 mit Verkleinerung des Fensters}
+	\label{tab:ErgebnisseDerXPathBerechnug}
+\end{table}
+
+
+
+\subsection*{Schemaerstellung (1 Punkt).}
+Geben Sie die Create Table statements aller von Ihnen angelegten Tabellen an:
+\begin{lstlisting}[style=dmrsql]
+[Create Table accel ...]
+\end{lstlisting}
+
+\subsection*{Zugriff mit nur einer Achse (1 Punkt).}
+Zeigen Sie, dass die Berechnung der Achsen für die Beispiele aus Phase 1 hier die gleichen Ergebnisse erzeugen:
+
+\begin{table}[h]
+	\centering
+		\begin{center}
+			\begin{tabular}{ l | c c }
+				\toprule
+				Achse & Ergebnisknoten ID's & Ergebnisgröße\\
+				\midrule
+				descendants & ... & ... \\  
+				\bottomrule
+			\end{tabular}
+			\end{center}
+	\caption{Ergebnisse der XPath-Berechnung des XPath-Accelerators aus Phase 3 mit nur einer Achse}
+	\label{tab:ErgebnisseDerXPathBerechnug}
+\end{table}
+
+Da sich die Knoten IDs unterscheiden, zeigen Sie für einige Knoten die jeweilige Identität.
+
+\subsection*{Zeitmamagement}
+
+Benötigte Zeit pro Person (nur Phase 2): \textbf{XXX}
+
+
+\end{document}
