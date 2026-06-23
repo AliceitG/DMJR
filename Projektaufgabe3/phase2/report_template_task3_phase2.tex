@@ -65,7 +65,7 @@ Venue-Zuordnung erfolgt ausschließlich anhand des \texttt{key}-Attributs:
   \item \texttt{conf/icde/} $\Rightarrow$ \textbf{ICDE}
 \end{itemize}
 
-Das Extraktions-Skript \texttt{phase3\_extract\_dblp.py} schreibt alle gefundenen Datensätze
+Das Extraktions-Skript \texttt{phase2\_extract\_dblp.py} schreibt alle gefundenen Datensätze
 in \texttt{my\_small\_bib.xml} (Wurzelknoten \texttt{bib}, identisches Format wie \texttt{toy\_example.txt}).
 
 Geben Sie die folgende Kennzahl bezogen auf \texttt{my\_small\_bib.xml} an:
@@ -95,7 +95,7 @@ Toy-Beispiel-Artikel (\texttt{SchmittKAMM23}, \texttt{HutterAK0L22}, \texttt{Thi
 
 \subsubsection*{Transformation und Import ins EDGE-Modell (0,5 Punkte)}
 
-Das Skript \texttt{phase3\_edge\_import.py} liest \texttt{my\_small\_bib.xml} und baut
+Das Skript \texttt{phase2\_edge\_import.py} liest \texttt{my\_small\_bib.xml} und baut
 daraus denselben EDGE-Baum auf wie in Phase~1 (Wurzel \texttt{bib} $\to$ Venue $\to$
 Jahr $\to$ Publikation $\to$ Felder). Der Import nutzt dieselben Tabellen \texttt{node}
 und \texttt{edge} aus Phase~1:

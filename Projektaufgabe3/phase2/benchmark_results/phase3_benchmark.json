@@ -1,0 +1,290 @@
+[
+  {
+    "size": "size1",
+    "num_records": 22691,
+    "axis": "ancestor",
+    "representation": "A_EDGE",
+    "mean_ms": 0.13102298835292459,
+    "mean_result_size": 3.0,
+    "num_samples": 20
+  },
+  {
+    "size": "size1",
+    "num_records": 22691,
+    "axis": "ancestor",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 0.5218959297053516,
+    "mean_result_size": 3.0,
+    "num_samples": 20
+  },
+  {
+    "size": "size1",
+    "num_records": 22691,
+    "axis": "descendant",
+    "representation": "A_EDGE",
+    "mean_ms": 5.4930227575823665,
+    "mean_result_size": 1892.45,
+    "num_samples": 20
+  },
+  {
+    "size": "size1",
+    "num_records": 22691,
+    "axis": "descendant",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 1.1818061931990087,
+    "mean_result_size": 1892.45,
+    "num_samples": 20
+  },
+  {
+    "size": "size1",
+    "num_records": 22691,
+    "axis": "descendant",
+    "representation": "C_Accel_SmallWindow",
+    "mean_ms": 0.6522354786284268,
+    "mean_result_size": 1892.45,
+    "num_samples": 20
+  },
+  {
+    "size": "size1",
+    "num_records": 22691,
+    "axis": "descendant",
+    "representation": "D_Accel1D_Clustered",
+    "mean_ms": 0.4826667020097375,
+    "mean_result_size": 1892.45,
+    "num_samples": 20
+  },
+  {
+    "size": "size1",
+    "num_records": 22691,
+    "axis": "sibling",
+    "representation": "A_EDGE",
+    "mean_ms": 0.13888744870200753,
+    "mean_result_size": 130.65,
+    "num_samples": 20
+  },
+  {
+    "size": "size1",
+    "num_records": 22691,
+    "axis": "sibling",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 0.13702699216082692,
+    "mean_result_size": 130.65,
+    "num_samples": 20
+  },
+  {
+    "size": "size2",
+    "num_records": 48354,
+    "axis": "ancestor",
+    "representation": "A_EDGE",
+    "mean_ms": 0.39337497437372804,
+    "mean_result_size": 3.0,
+    "num_samples": 20
+  },
+  {
+    "size": "size2",
+    "num_records": 48354,
+    "axis": "ancestor",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 1.083977147936821,
+    "mean_result_size": 3.0,
+    "num_samples": 20
+  },
+  {
+    "size": "size2",
+    "num_records": 48354,
+    "axis": "descendant",
+    "representation": "A_EDGE",
+    "mean_ms": 1.4680583961308002,
+    "mean_result_size": 1451.95,
+    "num_samples": 20
+  },
+  {
+    "size": "size2",
+    "num_records": 48354,
+    "axis": "descendant",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 1.6849480103701353,
+    "mean_result_size": 1451.95,
+    "num_samples": 20
+  },
+  {
+    "size": "size2",
+    "num_records": 48354,
+    "axis": "descendant",
+    "representation": "C_Accel_SmallWindow",
+    "mean_ms": 0.813268672209233,
+    "mean_result_size": 1451.95,
+    "num_samples": 20
+  },
+  {
+    "size": "size2",
+    "num_records": 48354,
+    "axis": "descendant",
+    "representation": "D_Accel1D_Clustered",
+    "mean_ms": 0.4301791777834296,
+    "mean_result_size": 1451.95,
+    "num_samples": 20
+  },
+  {
+    "size": "size2",
+    "num_records": 48354,
+    "axis": "sibling",
+    "representation": "A_EDGE",
+    "mean_ms": 0.3275167429819703,
+    "mean_result_size": 136.7,
+    "num_samples": 20
+  },
+  {
+    "size": "size2",
+    "num_records": 48354,
+    "axis": "sibling",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 0.23341879714280367,
+    "mean_result_size": 136.7,
+    "num_samples": 20
+  },
+  {
+    "size": "size3",
+    "num_records": 87151,
+    "axis": "ancestor",
+    "representation": "A_EDGE",
+    "mean_ms": 0.4741230281069875,
+    "mean_result_size": 3.0,
+    "num_samples": 20
+  },
+  {
+    "size": "size3",
+    "num_records": 87151,
+    "axis": "ancestor",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 2.178216609172523,
+    "mean_result_size": 3.0,
+    "num_samples": 20
+  },
+  {
+    "size": "size3",
+    "num_records": 87151,
+    "axis": "descendant",
+    "representation": "A_EDGE",
+    "mean_ms": 1.874047890305519,
+    "mean_result_size": 1469.6,
+    "num_samples": 20
+  },
+  {
+    "size": "size3",
+    "num_records": 87151,
+    "axis": "descendant",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 2.6686915778554976,
+    "mean_result_size": 1469.6,
+    "num_samples": 20
+  },
+  {
+    "size": "size3",
+    "num_records": 87151,
+    "axis": "descendant",
+    "representation": "C_Accel_SmallWindow",
+    "mean_ms": 13.771237526088953,
+    "mean_result_size": 1469.6,
+    "num_samples": 20
+  },
+  {
+    "size": "size3",
+    "num_records": 87151,
+    "axis": "descendant",
+    "representation": "D_Accel1D_Clustered",
+    "mean_ms": 1.3693540589883924,
+    "mean_result_size": 1469.6,
+    "num_samples": 20
+  },
+  {
+    "size": "size3",
+    "num_records": 87151,
+    "axis": "sibling",
+    "representation": "A_EDGE",
+    "mean_ms": 1.1228062445297837,
+    "mean_result_size": 565.9,
+    "num_samples": 20
+  },
+  {
+    "size": "size3",
+    "num_records": 87151,
+    "axis": "sibling",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 1.1939271236769855,
+    "mean_result_size": 565.9,
+    "num_samples": 20
+  },
+  {
+    "size": "size4",
+    "num_records": 145032,
+    "axis": "ancestor",
+    "representation": "A_EDGE",
+    "mean_ms": 0.5384166142903268,
+    "mean_result_size": 3.0,
+    "num_samples": 20
+  },
+  {
+    "size": "size4",
+    "num_records": 145032,
+    "axis": "ancestor",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 3.623814706224948,
+    "mean_result_size": 3.0,
+    "num_samples": 20
+  },
+  {
+    "size": "size4",
+    "num_records": 145032,
+    "axis": "descendant",
+    "representation": "A_EDGE",
+    "mean_ms": 4.087693791370839,
+    "mean_result_size": 3771.1,
+    "num_samples": 20
+  },
+  {
+    "size": "size4",
+    "num_records": 145032,
+    "axis": "descendant",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 5.047997902147472,
+    "mean_result_size": 3771.1,
+    "num_samples": 20
+  },
+  {
+    "size": "size4",
+    "num_records": 145032,
+    "axis": "descendant",
+    "representation": "C_Accel_SmallWindow",
+    "mean_ms": 1.1503624613396823,
+    "mean_result_size": 3771.1,
+    "num_samples": 20
+  },
+  {
+    "size": "size4",
+    "num_records": 145032,
+    "axis": "descendant",
+    "representation": "D_Accel1D_Clustered",
+    "mean_ms": 1.0899623739533126,
+    "mean_result_size": 3771.1,
+    "num_samples": 20
+  },
+  {
+    "size": "size4",
+    "num_records": 145032,
+    "axis": "sibling",
+    "representation": "A_EDGE",
+    "mean_ms": 0.5305707338266075,
+    "mean_result_size": 471.55,
+    "num_samples": 20
+  },
+  {
+    "size": "size4",
+    "num_records": 145032,
+    "axis": "sibling",
+    "representation": "B_Accel_FullWindow",
+    "mean_ms": 0.6314833997748792,
+    "mean_result_size": 471.55,
+    "num_samples": 20
+  }
+]
